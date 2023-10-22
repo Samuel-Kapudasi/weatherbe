@@ -12,15 +12,22 @@ export class WeatherService {
         const Citynames = await this.adminService.FindAll();
         console.log(typeof(Citynames));
 
-        const weather_data = new Map(); 
+        const weather_data = []; 
 
         for(const city of Citynames){
 
             const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&appid=${API_KEY}&units=metric`;
 
             const response = await axios.get(URL);
+            const weatherData = {
+                city: city,
+                temperature: response.data.main.temp,
+                weatherDescription: response.data.weather[0].description,
+            };
+            weather_data.push(weatherData);
 
-            weather_data[city.name] = response.data.main;
+                
+
 
         }
 
