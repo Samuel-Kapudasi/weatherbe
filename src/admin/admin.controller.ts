@@ -30,7 +30,7 @@ export class AdminController {
     @Post('/signout')
     signout(@Session() session:any){
         session.userId = null;
-        return "Logged Out Successfully";
+        return "Logged Out ";
     }
 
 
@@ -39,7 +39,7 @@ export class AdminController {
 
         console.log(body);
         if(session.userId === null){
-            return new BadRequestException("Please login as Admin to Access this");
+            return new BadRequestException("Please login as Admin ");
         }
         return this.adminService.AddCity(body.name);
     }
