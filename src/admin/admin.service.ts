@@ -19,13 +19,13 @@ export class AdminService {
         return cities;
     }
 
-    createUser(username:string,password:string){
-        const user = this.adminRepo.create({username,password});
+    createUser(email:string,password:string){
+        const user = this.adminRepo.create({email,password});
         this.adminRepo.save(user);
         return user;
     }
-    async signin(username:string,password:string){
-        const users = await this.adminRepo.find({where:{username:username}});
+    async signin(email:string,password:string){
+        const users = await this.adminRepo.find({where:{email:email}});
         const [user] = users;
         if(!user){
             return user;

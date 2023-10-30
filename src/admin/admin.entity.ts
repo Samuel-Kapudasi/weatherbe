@@ -5,7 +5,7 @@ export class Admin{
     @PrimaryGeneratedColumn()
     id:number;
     @Column()
-    username:string;
+    email:string;
     @Column()
     password:string;
 }

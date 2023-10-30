@@ -12,14 +12,14 @@ export class AdminController {
 
     @Post('/signup')
     signup(@Body() body:any ){
-        return this.adminService.createUser(body.username,body.password);
+        return this.adminService.createUser(body.email,body.password);
     }
 
     //SignIn
 
     @Post('/signin')
     async signin(@Body() body:any, @Session() session:any){
-        const admin = await this.adminService.signin(body.username,body.password);
+        const admin = await this.adminService.signin(body.email,body.password);
         if(admin) {
             session.userId = admin.id;
         }
